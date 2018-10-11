@@ -75,7 +75,7 @@ public class ForTestCompileRuntime {
 
         @NotNull
     public static File runtimeSourcesNoCommonJarForTests() {
-        return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-no-common-sources.jar"));
+        return assertExists(new File("dist/maven/kotlin-stdlib-sources.jar"));
     }
 
     //@NotNull

@@ -101,15 +101,6 @@ sourcesJar {
     from sourceSets.coroutines.kotlin
 }
 
-task distSourcesNoCommonJar(type: Jar) {
-    dependsOn(sourcesJar)
-    baseName = 'dist-kotlin-stdlib-no-common'
-    version = null
-    classifier = 'sources'
-    duplicatesStrategy = DuplicatesStrategy.FAIL
-    from zipTree(sourcesJar.outputs.files.singleFile)
-}
-
 task distSourcesJar(type: Jar) {
     dependsOn(sourcesJar, configurations.commonSources)
     baseName = 'dist-kotlin-stdlib'
@@ -125,23 +116,30 @@ task distSourcesJar(type: Jar) {
     }
 }
 
+task distSourcesJarNoCommon(type: Copy) {
+    from(sourcesJar)
+    into "$distDir/maven"
+    rename "-${java.util.regex.Pattern.quote(version)}", ''
+}
+
 artifacts {
     archives sourcesJar
     archives javadocJar
 }
 
 dist {
-    [jar, distSourcesJar, distSourcesNoCommonJar].forEach {
+    [jar, distSourcesJar].forEach {
         from(it) {
             rename('dist-', '')
         }
     }
 
+    dependsOn distSourcesJarNoCommon
+
     from (configurations.compile) {
         include 'annotations*.jar'
     }
 }
-
 
 task experimentalJarsDist(type: Copy) {
     from coroutinesJar
