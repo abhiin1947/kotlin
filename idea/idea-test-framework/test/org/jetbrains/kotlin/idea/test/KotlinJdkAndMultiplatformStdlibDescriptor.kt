@@ -27,29 +27,29 @@ class KotlinJdkAndMultiplatformStdlibDescriptor(val withSources: Boolean) : Kotl
             STDLIB_COMMON_LIB_NAME,
             withSources,
             ForTestCompileRuntime.stdlibCommonForTests(),
-            ForTestCompileRuntime.runtimeSourcesJarForTests()
+            ForTestCompileRuntime.stdlibCommonSourcesForTests()
         )
 
         model.addLib(
             STDLIB_LIB_NAME,
             withSources,
             ForTestCompileRuntime.runtimeJarForTests(),
-            ForTestCompileRuntime.runtimeSourcesJarForTests()
+            ForTestCompileRuntime.runtimeSourcesNoCommonJarForTests()
         )
 
-        model.addLib(
-            STDLIB_JDK7_LIB_NAME,
-            withSources,
-            ForTestCompileRuntime.stdlibJdk7ForTests(),
-            ForTestCompileRuntime.stdlibJdk7SourcesForTests()
-        )
-
-        model.addLib(
-            STDLIB_JDK8_LIB_NAME,
-            withSources,
-            ForTestCompileRuntime.stdlibJdk8ForTests(),
-            ForTestCompileRuntime.stdlibJdk8SourcesForTests()
-        )
+//        model.addLib(
+//            STDLIB_JDK7_LIB_NAME,
+//            withSources,
+//            ForTestCompileRuntime.stdlibJdk7ForTests(),
+//            ForTestCompileRuntime.stdlibJdk7SourcesForTests()
+//        )
+//
+//        model.addLib(
+//            STDLIB_JDK8_LIB_NAME,
+//            withSources,
+//            ForTestCompileRuntime.stdlibJdk8ForTests(),
+//            ForTestCompileRuntime.stdlibJdk8SourcesForTests()
+//        )
     }
 
     companion object {

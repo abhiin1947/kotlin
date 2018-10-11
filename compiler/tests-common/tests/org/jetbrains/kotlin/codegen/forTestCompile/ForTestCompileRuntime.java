@@ -69,34 +69,43 @@ public class ForTestCompileRuntime {
         return assertExists(new File("dist/kotlinc/lib/kotlin-script-runtime.jar"));
     }
 
-    @NotNull
     public static File runtimeSourcesJarForTests() {
         return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-sources.jar"));
     }
 
-    @NotNull
-    public static File stdlibJdk8ForTests() {
-        return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-jdk8.jar"));
+        @NotNull
+    public static File runtimeSourcesNoCommonJarForTests() {
+        return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-no-common-sources.jar"));
     }
 
-    @NotNull
-    public static File stdlibJdk8SourcesForTests() {
-        return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-jdk8-sources.jar"));
-    }
-
-    @NotNull
-    public static File stdlibJdk7ForTests() {
-        return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-jdk7.jar"));
-    }
-
-    @NotNull
-    public static File stdlibJdk7SourcesForTests() {
-        return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-jdk7-sources.jar"));
-    }
+    //@NotNull
+    //public static File stdlibJdk8ForTests() {
+    //    return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-jdk8.jar"));
+    //}
+    //
+    //@NotNull
+    //public static File stdlibJdk8SourcesForTests() {
+    //    return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-jdk8-sources.jar"));
+    //}
+    //
+    //@NotNull
+    //public static File stdlibJdk7ForTests() {
+    //    return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-jdk7.jar"));
+    //}
+    //
+    //@NotNull
+    //public static File stdlibJdk7SourcesForTests() {
+    //    return assertExists(new File("dist/kotlinc/lib/kotlin-stdlib-jdk7-sources.jar"));
+    //}
 
     @NotNull
     public static File stdlibCommonForTests() {
         return assertExists(new File("dist/common/kotlin-stdlib-common.jar"));
+    }
+
+    @NotNull
+    public static File stdlibCommonSourcesForTests() {
+        return assertExists(new File("dist/common/kotlin-stdlib-common-sources.jar"));
     }
 
     @NotNull

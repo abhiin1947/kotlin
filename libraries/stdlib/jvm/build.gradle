@@ -101,6 +101,15 @@ sourcesJar {
     from sourceSets.coroutines.kotlin
 }
 
+task distSourcesNoCommonJar(type: Jar) {
+    dependsOn(sourcesJar)
+    baseName = 'dist-kotlin-stdlib-no-common'
+    version = null
+    classifier = 'sources'
+    duplicatesStrategy = DuplicatesStrategy.FAIL
+    from zipTree(sourcesJar.outputs.files.singleFile)
+}
+
 task distSourcesJar(type: Jar) {
     dependsOn(sourcesJar, configurations.commonSources)
     baseName = 'dist-kotlin-stdlib'
@@ -122,15 +131,17 @@ artifacts {
 }
 
 dist {
-    [jar, distSourcesJar].forEach {
+    [jar, distSourcesJar, distSourcesNoCommonJar].forEach {
         from(it) {
             rename('dist-', '')
         }
     }
+
     from (configurations.compile) {
         include 'annotations*.jar'
     }
 }
+
 
 task experimentalJarsDist(type: Copy) {
     from coroutinesJar
